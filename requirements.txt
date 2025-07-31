@@ -1,0 +1,57 @@
+# Core deep learning framework
+torch>=1.12.0
+torchvision>=0.13.0
+torchaudio>=0.12.0
+
+# Transformers and model libraries
+transformers>=4.20.0
+tokenizers>=0.13.0
+datasets>=2.0.0
+accelerate>=0.20.0
+
+# Machine learning and data processing
+scikit-learn>=1.1.0
+numpy>=1.21.0
+pandas>=1.4.0
+scipy>=1.9.0
+
+# Progress bars and utilities
+tqdm>=4.64.0
+rich>=12.0.0
+
+# Parameter efficient fine-tuning
+peft>=0.4.0
+
+# Hugging Face utilities
+huggingface-hub>=0.10.0
+sentencepiece>=0.1.96
+
+# Data handling and visualization
+matplotlib>=3.5.0
+seaborn>=0.11.0
+plotly>=5.10.0
+
+# Jupyter and development tools
+jupyter>=1.0.0
+ipykernel>=6.0.0
+notebook>=6.4.0
+
+# Logging and monitoring
+tensorboard>=2.9.0
+wandb>=0.13.0
+
+# File handling and utilities
+pyyaml>=6.0
+click>=8.0.0
+argparse>=1.4.0
+
+# Optional: For advanced features
+# ray[tune]>=2.0.0  # For hyperparameter tuning
+# optuna>=3.0.0     # For optimization
+# mlflow>=1.28.0    # For experiment tracking
+
+# Development and testing (optional)
+# pytest>=7.0.0
+# black>=22.0.0
+# flake8>=5.0.0
+# mypy>=0.991 
