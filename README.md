@@ -71,7 +71,7 @@ Performs zero-shot evaluation using embedding distances.
 
 **Key Features:**
 - Calculates distances between reference and alternative embeddings
-- Supports multiple distance metrics (cosine, L1, L2, Pearson, Spearman)
+- Supports multiple distance metrics (cosine, Pearson, Spearman)
 - Computes AUROC and AUPRC metrics
 - No training required
 
