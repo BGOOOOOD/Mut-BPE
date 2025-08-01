@@ -12,7 +12,6 @@ Mut-BPE/
 ├── MutBPE_finetune.py          # Fine-tuning script for DNA models
 ├── MutBPE_vep_embedding.py     # Embedding extraction script
 ├── BPE_zeroshot.py             # Zero-shot evaluation script
-├── BPE_vep_rf.py               # Random Forest evaluation script
 ├── data/                       # Data directory
 ├── output/                     # Output directory for results
 └── scripts/                    # Utility scripts
@@ -41,14 +40,13 @@ python MutBPE_finetune.py \
     --window_size 768 \
     --BPEfromMut False \
     --reverse_strand False \
-    --use_CLS False \
     --num_train_epochs 3 \
     --per_device_train_batch_size 16 \
     --learning_rate 1e-4
 ```
 
 ### 2. MutBPE_vep_embedding.py
-Extracts embeddings from fine-tuned models for downstream analysis.
+Extracts embeddings from fine-tuned models for downstream analysis. You need to generate embeddings first before doing the zero-shot.
 
 **Key Features:**
 - Extracts embeddings from reference and alternative sequences
@@ -64,7 +62,6 @@ python MutBPE_vep_embedding.py \
     --seq_len 1024 \
     --mutbpe_method mutbpe \
     --window_size 768 \
-    --BPEfromMut False \
     --reverse_strand False \
     --use_CLS False
 ```
@@ -83,64 +80,10 @@ Performs zero-shot evaluation using embedding distances.
 python BPE_zeroshot.py \
     --experiment variant_effect_pathogenic_ClinVar \
     --model dnabert2 \
-    --mutbpe_method mutbpe \
-    --BPEfromMut False \
     --reverse_strand False \
     --use_CLS False \
     --distance_metrics cosine
 ```
-
-### 4. BPE_vep_rf.py
-Evaluates embeddings using Random Forest classifier.
-
-**Key Features:**
-- Trains Random Forest on extracted embeddings
-- Configurable hyperparameters (number of trees, tissue usage)
-- Cross-validation support
-- Performance evaluation with AUROC and AUPRC
-
-**Usage:**
-```bash
-python BPE_vep_rf.py \
-    --experiment variant_effect_pathogenic_ClinVar \
-    --model dnabert2 \
-    --mutbpe_method mutbpe \
-    --BPEfromMut False \
-    --reverse_strand False \
-    --use_CLS False
-```
-
-## Key Parameters
-
-### Model Parameters
-- `--model_name_or_path`: Pre-trained model path
-- `--seq_len`: Input sequence length
-- `--window_size`: Window size for mutation analysis
-- `--bp_per_token`: Base pairs per token
-
-### MutBPE Parameters
-- `--mutbpe_method`: BPE method ('base', 'mutbpe', or None)
-- `--BPEfromMut`: Whether to perform BPE from mutation point
-- `--mutbpe_pad_length`: Padding length for BPE tokenization
-
-### Processing Parameters
-- `--reverse_strand`: Use reverse strand sequences
-- `--use_CLS`: Use CLS token for embeddings, default false
-
-### Training Parameters
-- `--num_train_epochs`: Number of training epochs
-- `--per_device_train_batch_size`: Batch size per device
-- `--learning_rate`: Learning rate
-- `--logging_steps`: Logging frequency
-
-## Supported Models
-
-- **DNABERT-2**: `zhihan1996/DNABERT-2-117M`
-- **MutBERT**: Various MutBERT variants
-- **HyenaDNA**: Long-range DNA models
-- **Nucleotide Transformer**: 6-mer based models
-- **Gena-LM**: BPE models
-- **Caduceus**: State space models
 
 ## Experiments
 
@@ -152,6 +95,9 @@ The project supports various variant effect prediction experiments:
 - `variant_effect_pathogenic_Cosmic_chr1`: COSMIC variants
 - `variant_effect_pathogenic_Complex_chr1`: Complex variants
 - `variant_effect_pathogenic_mendelian_chr11`: Mendelian variants
+
+`variant_effect_causal_eQTL` data is supoorted for embedding & zero-shot demo now and `variant_effect_pathogenic_ClinVar` data is supported for finetune demo now, if you want to use these data you need to put hg38 data under ./Mut-BPE/data/download.
+Other experiment datasets are coming soon on huggingface.
 
 ## Output Structure
 
@@ -165,7 +111,7 @@ output/
                 ├── train_embeds.pt
                 ├── test_embeds.pt
                 ├── zero_shot/
-                └── vep_rf/
+                └── fintune_model_seq_{seq_len}
 ```
 
 ## Requirements
@@ -179,6 +125,8 @@ output/
 - CUDA (for GPU acceleration)
 
 ## Installation
+
+GPU is needed in embeddings generation and finetune.
 
 ```bash
 # Clone the repository
