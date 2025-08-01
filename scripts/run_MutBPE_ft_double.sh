@@ -21,7 +21,6 @@ for experiment in "${experiments[@]}"; do
           python MutBPE_finetune.py \
             --model_name_or_path "zhihan1996/DNABERT-2-117M" \
             --experiment "$experiment" \
-            --cache_dir "/hpc2hdd/home/yxu662/jhupload/MutBPE/data" \
             --seq_len 1024 \
             --mutbpe_pad_length 256 \
             --mutbpe_method "$mutbpe_method" \
