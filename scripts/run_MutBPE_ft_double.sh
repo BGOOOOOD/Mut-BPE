@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cuda=${1:-1}
+cuda=${1:-0}
 export CUDA_VISIBLE_DEVICES=${cuda}
 
 mutbpe_methods=("mutbpe")
@@ -34,8 +34,6 @@ for experiment in "${experiments[@]}"; do
             --per_device_eval_batch_size 16 \
             --learning_rate 1e-4 \
             --logging_steps 50 \
-            --save_steps 200 \
-            --eval_steps 200 \
             --eval_and_save_results True
         done
       done

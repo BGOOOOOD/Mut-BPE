@@ -34,8 +34,6 @@ for experiment in "${experiments[@]}"; do
             --per_device_eval_batch_size 16 \
             --learning_rate 1e-4 \
             --logging_steps 50 \
-            --save_steps 200 \
-            --eval_steps 200 \
             --eval_and_save_results True
         done
       done
