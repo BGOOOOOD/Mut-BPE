@@ -25,12 +25,6 @@ def get_args():
 def cosine_similarity(a, b):
     return F.cosine_similarity(a, b, dim=-1)
 
-def l1_distance(a, b):
-    return torch.norm(a - b, p=1, dim=-1)
-
-def l2_distance(a, b):
-    return torch.norm(a - b, p=2, dim=-1)
-
 def pearson_similarity(a, b):
     # a, b: [N, D] or [D]
     if a.ndim == 1:
