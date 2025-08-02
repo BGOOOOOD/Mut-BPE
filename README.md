@@ -12,8 +12,6 @@ Mut-BPE/
 ├── MutBPE_finetune.py          # Fine-tuning script for DNA models
 ├── MutBPE_vep_embedding.py     # Embedding extraction script
 ├── BPE_zeroshot.py             # Zero-shot evaluation script
-├── data/                       # Data directory
-├── output/                     # Output directory for results
 └── scripts/                    # Utility scripts
 ```
 
