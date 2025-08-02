@@ -20,7 +20,7 @@ Mut-BPE/
 ## Main Scripts
 
 ### 1. MutBPE_finetune.py
-Fine-tunes DNA language models (DNABERT-2, MutBERT, etc.) using mutation-aware BPE tokenization.
+Fine-tunes DNA language models (DNABERT-2, MutBERT, etc.) using mutation-aware BPE tokenization. Finetuned models will be uploaded to huggingface soon.
 
 **Key Features:**
 - Supports multiple DNA models (DNABERT-2, MutBERT, HyenaDNA, etc.)
